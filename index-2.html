@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ALPAN K1NG RIMBA</title>
+<style>
+:root{--bg:#0a120d;--card:#12201a;--moss:#8fb339;--tx:#f5efe3;--mut:#9aa89d;--ln:#223329;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,sans-serif;overflow-x:hidden}
+header{position:sticky;top:0;z-index:5;background:#0a120dee;backdrop-filter:blur(8px);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--ln)}
+.logo{font-weight:800;letter-spacing:.5px}.logo b{color:var(--moss)}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.hero{padding:32px 16px 20px;background:radial-gradient(circle at 70% 0,#1e3a22,transparent 60%),linear-gradient(#0f1f14,var(--bg))}
+.hero h1{font-size:2rem;line-height:1.15;max-width:14em}.hero h1 span{color:var(--moss)}
+.hero p{color:var(--mut);margin:10px 0 16px;max-width:34em}
+#q{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--ln);background:var(--card);color:var(--tx);font:inherit}
+#q:focus{outline:2px solid var(--moss)}
+.bar{padding:12px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.chip{flex:none;padding:8px 14px;border-radius:99px;background:var(--card);border:1px solid var(--ln);color:var(--mut);white-space:nowrap}
+.chip.on{background:var(--moss);color:#0a120d;font-weight:700}
+.tools{padding:0 14px 8px;display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:.9rem}
+select{background:var(--card);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:6px 8px}
+h2{padding:14px 14px 6px;font-size:1.1rem}
+.row{display:flex;gap:10px;overflow-x:auto;padding:0 14px 6px;scrollbar-width:none}
+.row .c{flex:none;width:140px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 14px 20px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+.c{position:relative;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln);text-align:left;display:block;width:100%}
+.ph{aspect-ratio:4/3;display:grid;place-items:center;font-size:3rem;position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c .t{padding:8px 10px}.c .t b{display:block;font-size:.95rem}.c .t i{color:var(--mut);font-size:.78rem}
+.st{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:6px;margin-top:4px;font-weight:700;color:#0a120d}
+.fav{position:absolute;top:6px;right:6px;background:#0a120d99;border-radius:99px;width:34px;height:34px;font-size:1.1rem}
+.empty{text-align:center;color:var(--mut);padding:40px 20px;grid-column:1/-1}
+#m{position:fixed;inset:0;z-index:20;background:#000c;display:none;align-items:flex-end;justify-content:center}
+#m.o{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:640px;max-height:92%;overflow-y:auto;border-radius:22px 22px 0 0;padding-bottom:20px}
+.sheet .ph{aspect-ratio:16/10;font-size:5rem}
+.bd{padding:14px 16px}.bd h3{font-size:1.5rem}.bd em{color:var(--moss)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:12px 0;font-size:.92rem}dt{color:var(--mut)}
+.nav{display:flex;gap:8px;padding:0 16px;margin-top:10px}.nav button{flex:1;padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--ln)}
+.note{color:var(--mut);font-size:.8rem;margin-top:10px}
+footer{padding:24px 16px 80px;text-align:center;color:var(--mut);font-size:.85rem;border-top:1px solid var(--ln)}
+#up{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:99px;background:var(--moss);color:#0a120d;font-size:1.3rem;display:none;z-index:6}
+@media(prefers-reduced-motion:no-preference){.c{transition:transform .15s}.c:active{transform:scale(.97)}}
+</style></head><body>
+<header><div class="logo">🐅 ALPAN <b>K1NG</b> RIMBA</div><button id="fv" class="chip">♥ Favorit</button></header>
+<section class="hero"><h1>Jelajahi <span>satwa dunia</span>, dari rimba sampai samudra</h1>
+<p>Ensiklopedia visual hewan berbahasa Indonesia. Cari, saring, dan simpan hewan favoritmu.</p>
+<input id="q" type="search" placeholder="Cari nama, nama ilmiah, habitat…" aria-label="Cari hewan"></section>
+<nav class="bar" id="chips" aria-label="Kategori"></nav>
+<div class="tools"><span id="cnt"></span><select id="so" aria-label="Urutkan"><option value="p">Pilihan editor</option><option value="a">Abjad A–Z</option></select></div>
+<div id="sec"></div>
+<main class="grid" id="g"></main>
+<footer><b>ALPAN K1NG RIMBA</b><br>Status IUCN ditulis dari pengetahuan umum dan dapat berubah; periksa iucnredlist.org untuk data terbaru.</footer>
+<button id="up" aria-label="Kembali ke atas">↑</button>
+<div id="m" role="dialog" aria-modal="true"><div class="sheet" id="sh"></div></div>
+<script>
+const CATS={M:'Mamalia',B:'Burung',R:'Reptil',A:'Amfibi',I:'Ikan',L:'Hewan laut',N:'Nokturnal',P:'Predator',T:'Langka/terancam',D:'Hewan Indonesia',U:'Kemampuan unik'};
+const SC={LC:['#8fb339','Risiko rendah'],VU:['#e6c84a','Rentan'],EN:['#f0963c','Terancam'],CR:['#e5583f','Kritis']};
+// nama|ilmiah|kategori|habitat|ukuran|makanan|umur|IUCN|fakta|ancaman|emoji|gambar(opsional)
+const D=`Singa|Panthera leo|MPU|Sabana & padang rumput Afrika sub-Sahara, sedikit di India (Gir)|Panjang badan sekitar 1,7–2,5 m; berat sekitar 120–250 kg|Karnivora: zebra, wildebeest, kerbau|±10–14 th liar|VU|Satu-satunya kucing besar yang hidup berkelompok (pride).|Konflik dengan manusia, hilangnya mangsa & habitat|🦁
+Harimau Sumatra|Panthera tigris sumatrae|MPTD|Hutan hujan Pulau Sumatra|Panjang sekitar 2,2–2,5 m; berat sekitar 75–140 kg|Karnivora: rusa, babi hutan|±15 th|CR|Subspesies harimau terkecil yang masih hidup.|Perburuan, perambahan hutan, perdagangan ilegal|🐅
+Gajah Afrika|Loxodonta africana|MT|Sabana & hutan Afrika|Tinggi bahu sekitar 3–4 m; berat hingga sekitar 6 ton|Herbivora: rumput, daun, kulit kayu|±60–70 th|EN|Hewan darat terbesar di dunia.|Perburuan gading, hilangnya habitat|🐘
+Gajah Asia|Elephas maximus|MT|Hutan & padang rumput Asia Selatan dan Tenggara|Tinggi bahu sekitar 2–3,5 m; berat sekitar 2–5 ton|Herbivora|±60 th|EN|Telinganya lebih kecil dari gajah Afrika.|Fragmentasi habitat, konflik dengan manusia|🐘
+Serigala abu-abu|Canis lupus|MP|Hutan, tundra, pegunungan belahan bumi utara|Panjang sekitar 1–1,6 m; berat sekitar 20–55 kg|Karnivora: rusa, elk, mamalia kecil|±6–8 th liar|LC|Hidup berkelompok dan berkomunikasi dengan lolongan.|Perburuan, konflik dengan peternak|🐺
+Rubah merah|Vulpes vulpes|MPN|Hutan, padang, kota di belahan bumi utara|Berat sekitar 3–11 kg|Omnivora: hewan kecil, buah, serangga|±3–5 th liar|LC|Karnivora liar dengan persebaran terluas di dunia.|Penyakit, lalu lintas|🦊
+Panda raksasa|Ailuropoda melanoleuca|MT|Hutan bambu pegunungan Tiongkok tengah|Berat sekitar 70–125 kg|Hampir seluruhnya bambu|±15–20 th liar|VU|Memakan bambu belasan jam sehari.|Fragmentasi habitat|🐼
+Panda merah|Ailurus fulgens|MTN|Hutan pegunungan Himalaya timur dan Tiongkok barat daya|Berat sekitar 3–6 kg|Terutama bambu, juga buah & telur|±8–10 th liar|EN|Ekornya bergelang dan dipakai untuk menjaga keseimbangan.|Hilangnya hutan, perburuan|🦝
+Orangutan Sumatra|Pongo abelii|MTD|Hutan hujan Sumatra bagian utara|Berat jantan sekitar 60–90 kg|Buah, daun, serangga|±35–45 th|CR|Kera besar Asia yang membuat sarang tidur baru tiap malam.|Alih fungsi hutan, perdagangan satwa|🦧
+Komodo|Varanus komodoensis|RPTD|Pulau Komodo, Rinca, Flores, Gili Motang (NTT)|Panjang hingga sekitar 2–3 m; berat sekitar 70–90 kg|Karnivora: rusa, babi hutan, bangkai|±30 th|EN|Kadal terbesar di dunia.|Kenaikan muka laut, hilangnya mangsa|🦎
+Cenderawasih kecil|Paradisaea minor|BD|Hutan Papua dan sekitarnya|Panjang sekitar 32 cm di luar bulu hias|Buah dan serangga|Data belum saya verifikasi|LC|Jantan menari untuk memamerkan bulu hiasnya.|Perburuan bulu, penebangan hutan|🐦
+Elang Jawa|Nisaetus bartelsi|BPTD|Hutan pegunungan Pulau Jawa|Panjang sekitar 60 cm|Karnivora: mamalia kecil, burung, reptil|Data belum saya verifikasi|EN|Menjadi inspirasi lambang negara Garuda Pancasila.|Hilangnya hutan, perburuan|🦅
+Serak jawa|Tyto alba|BPN|Hampir seluruh dunia kecuali kutub|Panjang sekitar 33–39 cm|Karnivora: tikus dan hewan kecil|±2–4 th liar|LC|Mampu menangkap mangsa hanya dengan pendengaran.|Racun tikus, hilangnya sarang|🦉
+Flamingo besar|Phoenicopterus roseus|B|Laguna asin dan rawa di Afrika, Eropa selatan, Asia|Tinggi sekitar 1,2–1,5 m|Alga dan krustasea kecil|±30–40 th|LC|Warna merah mudanya berasal dari pigmen makanan.|Gangguan lahan basah|🦩
+Kasuari gelam|Casuarius casuarius|BDU|Hutan hujan Papua dan Australia utara|Tinggi sekitar 1,5–1,8 m; berat sekitar 40–60 kg|Buah jatuh, jamur, hewan kecil|±40 th|LC|Tak bisa terbang, tetapi berlari kencang dan melompat tinggi.|Hilangnya hutan, tertabrak kendaraan|🐦
+Axolotl|Ambystoma mexicanum|ATU|Kanal Xochimilco, Meksiko|Panjang sekitar 15–25 cm|Cacing, serangga, krustasea kecil|±10–15 th|CR|Mampu meregenerasi anggota tubuh.|Polusi, spesies invasif, urbanisasi|🦎
+Bunglon pardalis|Furcifer pardalis|RU|Hutan Madagaskar|Panjang hingga sekitar 50 cm (jantan)|Serangga|±2–3 th|LC|Lidahnya menembak mangsa dengan sangat cepat.|Penebangan hutan|🦎
+Buaya muara|Crocodylus porosus|RPD|Muara, rawa, sungai Asia Tenggara hingga Australia|Panjang bisa lebih dari 5 m|Karnivora: ikan, mamalia, burung|±70 th|LC|Reptil hidup terbesar di dunia.|Perburuan kulit, konflik dengan manusia|🐊
+Penyu hijau|Chelonia mydas|RLTD|Laut tropis dan subtropis, termasuk perairan Indonesia|Panjang cangkang sekitar 1–1,2 m|Dewasa memakan lamun dan alga|Data belum saya verifikasi|EN|Penyu betina kembali bertelur ke pantai tempat lahirnya.|Perburuan telur, sampah laut, jaring ikan|🐢
+Hiu paus|Rhincodon typus|ILTU|Laut hangat tropis|Panjang hingga sekitar 12 m|Plankton dan ikan kecil (penyaring)|±70 th (perkiraan)|EN|Ikan terbesar di dunia dan tidak berbahaya bagi manusia.|Perburuan, tertabrak kapal|🦈
+Paus biru|Balaenoptera musculus|MLU|Samudra di seluruh dunia|Panjang hingga sekitar 30 m|Krill|±70–90 th|EN|Hewan terbesar yang pernah diketahui hidup.|Tabrakan kapal, kebisingan laut|🐋
+Lumba-lumba hidung botol|Tursiops truncatus|MLU|Perairan pesisir hangat dan laut lepas|Panjang sekitar 2–4 m|Ikan dan cumi|±40–50 th|LC|Memakai ekolokasi untuk berburu.|Jaring ikan, polusi|🐬
+Gurita biasa|Octopus vulgaris|LUN|Perairan hangat dan sedang di seluruh dunia|Panjang lengan sekitar 1 m|Kepiting, kerang, ikan|±1–2 th|LC|Memiliki tiga jantung dan darah biru.|Penangkapan berlebih|🐙
+Pari manta karang|Mobula alfredi|ILU|Perairan tropis, terumbu karang|Rentang sayap sekitar 3–5 m|Plankton|±40 th (perkiraan)|VU|Memiliki otak yang relatif besar di antara ikan.|Perburuan, tertangkap jaring|🐟
+Kuda laut|Hippocampus kuda|ILUD|Padang lamun dan terumbu Indo-Pasifik|Panjang sekitar 15–30 cm|Krustasea kecil|Data belum saya verifikasi|VU|Pejantan yang mengandung dan melahirkan anak.|Perdagangan obat tradisional, rusaknya habitat|🐴
+Katak panah emas|Phyllobates terribilis|ATU|Hutan hujan pesisir Pasifik Kolombia|Panjang sekitar 5 cm|Semut dan serangga kecil|Data belum saya verifikasi|EN|Salah satu hewan paling beracun di dunia.|Hilangnya hutan|🐸
+Trenggiling Sunda|Manis javanica|MNTDU|Hutan Asia Tenggara termasuk Indonesia|Panjang tubuh sekitar 40–65 cm|Semut dan rayap|Data belum saya verifikasi|CR|Satu-satunya mamalia bersisik; menggulung saat terancam.|Perdagangan ilegal sisik dan daging|🦔
+Okapi|Okapia johnstoni|MTN|Hutan hujan Kongo, Afrika Tengah|Tinggi bahu sekitar 1,5 m|Daun, buah, jamur|±20–30 th|EN|Kerabat jerapah dengan loreng seperti zebra di kaki.|Hilangnya hutan, perburuan, konflik bersenjata|🦓
+Shoebill|Balaeniceps rex|BPT|Rawa papirus Afrika Tengah dan Timur|Tinggi sekitar 1,1–1,4 m|Ikan paru-paru dan ikan lain|±35 th (perkiraan)|VU|Paruhnya besar seperti sepatu kayu.|Gangguan rawa, perburuan|🐦
+Narwhal|Monodon monoceros|MLTU|Perairan Arktik|Panjang sekitar 4–5 m|Ikan, cumi|±50 th (perkiraan)|LC|Taring panjang jantan sebenarnya gigi yang berpilin.|Perubahan iklim, hilangnya es laut|🐳`.split('\n').map((l,i)=>{const p=l.split('|');return{id:i,n:p[0],s:p[1],c:p[2],h:p[3],z:p[4],f:p[5],l:p[6],i:p[7],u:p[8],t:p[9],e:p[10],img:p[11]||''}});
+const $=s=>document.querySelector(s);
+let cat='',fo=false,sort='p',fav=[],rec=[];
+try{fav=JSON.parse(localStorage.getItem('fav')||'[]');rec=JSON.parse(localStorage.getItem('rec')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('fav',JSON.stringify(fav));localStorage.setItem('rec',JSON.stringify(rec))}catch(e){}};
+const hue=id=>(id*47)%360;
+function ph(a){const d=document.createElement('div');d.className='ph';d.style.background=`linear-gradient(135deg,hsl(${hue(a.id)} 40% 18%),hsl(${(hue(a.id)+40)%360} 45% 10%))`;d.textContent=a.e;
+if(a.img){const im=new Image();im.alt=a.n+' ('+a.s+')';im.loading='lazy';im.onerror=()=>im.remove();im.src=a.img;d.append(im)}return d}
+function card(a){const b=document.createElement('div');b.className='c';
+const bt=document.createElement('button');bt.style.cssText='display:block;width:100%;text-align:left';bt.setAttribute('aria-label','Buka '+a.n);bt.append(ph(a));
+const sc=SC[a.i];const t=document.createElement('div');t.className='t';t.innerHTML=`<b>${a.n}</b><i>${a.s}</i><br><span class="st" style="background:${sc[0]}">${a.i}</span>`;bt.append(t);bt.onclick=()=>open(a.id);
+const f=document.createElement('button');f.className='fav';f.textContent=fav.includes(a.id)?'♥':'♡';f.setAttribute('aria-label','Favorit');f.onclick=e=>{e.stopPropagation();tog(a.id);render()};
+b.append(bt,f);return b}
+function tog(id){fav=fav.includes(id)?fav.filter(x=>x!==id):[...fav,id];save()}
+function list(){const q=$('#q').value.trim().toLowerCase();let r=D.filter(a=>(!cat||a.c.includes(cat))&&(!fo||fav.includes(a.id))&&(!q||[a.n,a.s,a.h,...[...a.c].map(k=>CATS[k])].join(' ').toLowerCase().includes(q)));
+if(sort==='a')r.sort((x,y)=>x.n.localeCompare(y.n,'id'));return r}
+function render(){const r=list(),g=$('#g');g.innerHTML='';$('#cnt').textContent=r.length+' hewan';
+if(!r.length){g.innerHTML='<div class="empty">🔍<br><b>Tidak ada hewan yang cocok.</b><br>Coba kata kunci lain, hapus filter, atau tambahkan hewan ke favorit.</div>'}
+r.forEach(a=>g.append(card(a)));
+const s=$('#sec');s.innerHTML='';const showRec=!$('#q').value&&!cat&&!fo&&rec.length;
+if(showRec){s.innerHTML='<h2>Baru dilihat</h2>';const w=document.createElement('div');w.className='row';rec.slice(0,8).forEach(id=>w.append(card(D[id])));s.append(w);s.insertAdjacentHTML('beforeend','<h2>Semua hewan</h2>')}
+$('#fv').classList.toggle('on',fo)}
+function chips(){const c=$('#chips');c.innerHTML='';[['','Semua'],...Object.entries(CATS)].forEach(([k,v])=>{const b=document.createElement('button');b.className='chip'+(cat===k?' on':'');b.textContent=v;b.onclick=()=>{cat=k;chips();render()};c.append(b)})}
+let cur=-1;
+function open(id){cur=id;const a=D[id];rec=[id,...rec.filter(x=>x!==id)].slice(0,10);save();
+const sh=$('#sh');sh.innerHTML='';sh.append(ph(a));const sc=SC[a.i];
+const rel=D.filter(x=>x.id!==id&&[...x.c].some(k=>a.c.includes(k))).sort((x,y)=>[...y.c].filter(k=>a.c.includes(k)).length-[...x.c].filter(k=>a.c.includes(k)).length).slice(0,4);
+const bd=document.createElement('div');bd.className='bd';
+bd.innerHTML=`<h3>${a.n}</h3><em>${a.s}</em> <span class="st" style="background:${sc[0]}">${a.i} · ${sc[1]}</span>
+<p style="margin-top:10px">${a.u}</p><dl><dt>Habitat</dt><dd>${a.h}</dd><dt>Ukuran</dt><dd>${a.z}</dd><dt>Makanan</dt><dd>${a.f}</dd><dt>Umur</dt><dd>${a.l}</dd><dt>Ancaman</dt><dd>${a.t}</dd><dt>Kategori</dt><dd>${[...a.c].map(k=>CATS[k]).join(', ')}</dd></dl>
+<p class="note">Ukuran dan umur adalah perkiraan. Status IUCN dari pengetahuan umum; verifikasi di iucnredlist.org. Sumber rujukan: IUCN Red List.</p>`;
+const fb=document.createElement('button');fb.className='chip';fb.style.marginTop='12px';const upd=()=>fb.textContent=fav.includes(id)?'♥ Dihapus dari favorit? Ketuk':'♡ Tambah ke favorit';upd();fb.onclick=()=>{tog(id);upd();render()};bd.append(fb);
+const h=document.createElement('h2');h.style.padding='14px 0 6px';h.textContent='Hewan terkait';bd.append(h);
+const w=document.createElement('div');w.className='row';w.style.padding='0';rel.forEach(x=>{const c=card(x);c.querySelector('button').onclick=()=>open(x.id);w.append(c)});bd.append(w);sh.append(bd);
+const n=document.createElement('div');n.className='nav';n.innerHTML='<button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button>';sh.append(n);
+const bk=document.createElement('div');bk.className='nav';bk.innerHTML='<button id="cl">Kembali ke galeri</button>';sh.append(bk);
+const L=list().map(x=>x.id),i=L.indexOf(id);
+$('#pv').onclick=()=>open(L[(i-1+L.length)%L.length]);$('#nx').onclick=()=>open(L[(i+1)%L.length]);$('#cl').onclick=close;
+sh.scrollTop=0;$('#m').classList.add('o');document.body.style.overflow='hidden'}
+function close(){$('#m').classList.remove('o');document.body.style.overflow='';render()}
+$('#m').onclick=e=>{if(e.target.id==='m')close()};
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+$('#q').oninput=render;$('#so').onchange=e=>{sort=e.target.value;render()};
+$('#fv').onclick=()=>{fo=!fo;render()};
+$('#up').onclick=()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+addEventListener('scroll',()=>{$('#up').style.display=scrollY>400?'block':'none'});
+chips();render();
+</script></body></html>
